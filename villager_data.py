@@ -12,12 +12,18 @@ def all_species(filename):
         - set[str]: a set of strings
     """
 
-    species = set()
-
     # TODO: replace this with your code
+    file = open(filename)
+    species_list = []
+    for data in file:
+        entry = data.split("|")
+        species_name = entry[1]
+        species_list.append(species_name)
+
+    species = set(species_list) 
 
     return species
-
+    
 
 def get_villagers_by_species(filename, search_string="All"):
     """Return a list of villagers' names by species.
@@ -30,9 +36,15 @@ def get_villagers_by_species(filename, search_string="All"):
         - list[str]: a list of names
     """
 
-    villagers = []
-
     # TODO: replace this with your code
+    file = open(filename)
+    villagers = []
+    for data in file:
+        entry = data.split("|")
+        if search_string == entry[1]:
+            villagers.append(entry[0])
+        elif search_string == "All":
+            villagers.append(entry[0])
 
     return sorted(villagers)
 
@@ -48,8 +60,43 @@ def all_names_by_hobby(filename):
     """
 
     # TODO: replace this with your code
+    
+    file = open(filename)
+    #hobbies = [fitness[], education[], nature[], play[], fashion[], music[]]
+    hobbies = [] 
+    for data in file:
+        entry = data.split("|")
+        hobby = entry[3]
+        hobbies.append(hobby)
+    
+    hobbies = list(set(hobbies))
+    hobbies_list = []
+    for hobby in hobbies:
+        hobby = []
+        hobbies_list.append(hobby)
+    
+    for data in file:
+        entry = data.split("|")
+        hobby = entry[3]
+        if hobby == 
+    
 
-    return []
+    
+    print(hobbies_list)
+    print(hobby)
+
+        # hobby = entry[3]
+        
+        # hobbies.append(list(hobby))  
+
+        # if entry[3] == "Fitness":
+        #     hobbies[0].append(entry[0]) 
+
+       
+            
+    
+
+    
 
 
 def all_data(filename):
@@ -105,3 +152,7 @@ def find_likeminded_villagers(filename, villager_name):
     """
 
     # TODO: replace this with your code
+
+#print(all_species("villagers.csv"))
+#print(get_villagers_by_species("villagers.csv", 'Dog'))
+print(all_names_by_hobby("villagers.csv"))
